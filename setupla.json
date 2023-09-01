@@ -1,0 +1,16 @@
+{
+    "nome": "nome",
+    "estados": ["q0", "q1"],
+    "simbolos_entrada": ["0", "1"],
+    "simbolos_fita": ["0", "1", "_"],
+    "transicoes": {
+        "q0": {
+            "0": ["q1", "1", ">"]
+        }
+        
+    },
+    "estado_inicial": "q0",
+    "simbolo_branco": "_",
+    "estados_finais": ["q0", "q1"],
+    "aceitacao": true
+}

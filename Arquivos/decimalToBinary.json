@@ -1,0 +1,107 @@
+{
+    "nome": "Decimal to Reverse Binary Converter",
+    "estados": ["qinit", "halve", "addHalf", "jump", "removezero", "goBack", "rest", "rest0", "rest1", "setrest0", "setrest1", "continue", "continue2", "qfin"],
+    "simbolos_entrada": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "simbolos_fita": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "_"],
+    "transicoes": {
+        "qinit": {
+            "0": ["qinit", "0", ">"],
+            "1": ["qinit", "1", ">"],
+            "2": ["qinit", "2", ">"],
+            "3": ["qinit", "3", ">"],
+            "4": ["qinit", "4", ">"],
+            "5": ["qinit", "5", ">"],
+            "6": ["qinit", "6", ">"],
+            "7": ["qinit", "7", ">"],
+            "8": ["qinit", "8", ">"],
+            "9": ["qinit", "9", ">"],
+            "_": ["halve", "0", "<"]
+        },
+        "halve": {
+            "0": ["halve", "0", "<"],
+            "1": ["addHalf", "0", ">"],
+            "2": ["halve", "1", "<"],
+            "3": ["addHalf", "1", ">"],
+            "4": ["halve", "2", "<"],
+            "5": ["addHalf", "2", ">"],
+            "6": ["halve", "3", "<"],
+            "7": ["addHalf", "3", ">"],
+            "8": ["halve", "4", "<"],
+            "9": ["addHalf", "4", ">"],
+            "_": ["removezero", "_", ">"]
+        },
+        "addHalf": {
+            "0": ["jump", "5", "<"],
+            "1": ["jump", "6", "<"],
+            "2": ["jump", "7", "<"],
+            "3": ["jump", "8", "<"],
+            "4": ["jump", "9", "<"]
+        },
+        "jump": {
+            "0": ["halve", "0", "<"],
+            "1": ["halve", "1", "<"],
+            "2": ["halve", "2", "<"],
+            "3": ["halve", "3", "<"],
+            "4": ["halve", "4", "<"]
+        },
+        "removezero": {
+            "0": ["removezero", "_", ">"],
+            "1": ["goBack", "1", ">"],
+            "2": ["goBack", "2", ">"],
+            "3": ["goBack", "3", ">"],
+            "4": ["goBack", "4", ">"],
+            "5": ["goBack", "5", ">"],
+            "6": ["goBack", "6", ">"],
+            "7": ["goBack", "7", ">"],
+            "8": ["goBack", "8", ">"],
+            "9": ["goBack", "9", ">"],
+            "_": ["qfin", "_", ">"]
+        },
+        "goBack": {
+            "0": ["goBack", "0", ">"],
+            "1": ["goBack", "1", ">"],
+            "2": ["goBack", "2", ">"],
+            "3": ["goBack", "3", ">"],
+            "4": ["goBack", "4", ">"],
+            "5": ["goBack", "5", ">"],
+            "6": ["goBack", "6", ">"],
+            "7": ["goBack", "7", ">"],
+            "8": ["goBack", "8", ">"],
+            "9": ["goBack", "9", ">"],
+            "_": ["rest", "_", "<"]
+        },
+        "rest": {
+            "0": ["rest0", "_", ">"],
+            "5": ["rest1", "_", ">"]
+        },
+        "rest0": {
+            "_": ["setrest0", "_", ">"]
+        },
+        "rest1": {
+            "_": ["setrest1", "_", ">"]
+        },
+        "setrest0": {
+            "0": ["setrest0", "0", ">"],
+            "1": ["setrest0", "1", ">"],
+            "_": ["continue", "0", "<"]
+        },
+        "setrest1": {
+            "0": ["setrest1", "0", ">"],
+            "1": ["setrest1", "1", ">"],
+            "_": ["continue", "1", "<"]
+        },
+        "continue": {
+            "0": ["continue", "0", "<"],
+            "1": ["continue", "1", "<"],
+            "_": ["continue2", "_", "<"]
+        },
+        "continue2": {
+            "_": ["halve", "0", "<"]
+        },
+        "qfin": {} 
+    },
+    "estado_inicial": "qinit",
+    "simbolo_branco": "_",
+    "estados_finais": ["qfin"],
+    "aceitacao": false
+}

@@ -1,0 +1,64 @@
+{
+    "nome": "Palindrome Binario",
+    "estados": ["q0", "q1", "qLeft0", "qRight0", "qLeft1", "qRight1", "qSearch0L", "qSearch0R", "qSearch1L", "qSearch1R", "qAccept", "qReject"],
+    "simbolos_entrada": ["0", "1"],
+    "simbolos_fita": ["0", "1", "_"],
+    "transicoes": {
+        "q0": {
+            "0": ["qRight0", "_", ">"],
+            "1": ["qRight1", "_", ">"],
+            "_": ["qAccept", "_", ">"]
+        },
+        "q1": {
+            "0": ["qLeft0", "_", "<"],
+            "1": ["qLeft1", "_", "<"],
+            "_": ["qAccept", "_", "<"]
+        },
+        "qLeft0": {
+            "0": ["qLeft0", "0", "<"],
+            "1": ["qLeft0", "1", "<"],
+            "_": ["qSearch0R", "_", ">"]
+        },
+        "qRight0": {
+            "0": ["qRight0", "0", ">"],
+            "1": ["qRight0", "1", ">"],
+            "_": ["qSearch0L", "_", "<"]
+        },
+        "qLeft1": {
+            "0": ["qLeft1", "0", "<"],
+            "1": ["qLeft1", "1", "<"],
+            "_": ["qSearch1R", "_", ">"]
+        },
+        "qRight1": {
+            "0": ["qRight1", "0", ">"],
+            "1": ["qRight1", "1", ">"],
+            "_": ["qSearch1L", "_", "<"]
+        },
+        "qSearch0L": {
+            "0": ["q1", "_", "<"],
+            "1": ["qReject", "1", "<"],
+            "_": ["qAccept", "_", "<"]
+        },
+        "qSearch0R": {
+            "0": ["q0", "_", ">"],
+            "1": ["qReject", "1", ">"],
+            "_": ["qAccept", "_", ">"]
+        },
+        "qSearch1L": {
+            "0": ["qReject", "0", "<"],
+            "1": ["q1", "_", "<"],
+            "_": ["qAccept", "_", "<"]
+        },
+        "qSearch1R": {
+            "0": ["qReject", "0", "<"],
+            "1": ["q0", "_", ">"],
+            "_": ["qAccept", "_", "<"]
+        },
+        "qAccept": {},
+        "qReject": {}
+    },
+    "estado_inicial": "q0",
+    "simbolo_branco": "_",
+    "estados_finais": ["qAccept"],
+    "aceitacao": true
+}

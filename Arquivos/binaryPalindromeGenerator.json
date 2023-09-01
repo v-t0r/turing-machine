@@ -1,0 +1,48 @@
+{
+    "nome": "Binary Palindrome Generator",
+    "estados": ["qinit", "copying_from_right_to_left", "copying_0_to_the_right", "copying_1_to_the_right", "removing_the_markers", "qfin"],
+    "simbolos_entrada": ["0", "1"],
+    "simbolos_fita": ["0", "1", "o", "i", "_"],
+    "transicoes": {
+        "qinit": {
+            "0": ["qinit", "0", ">"],
+            "1": ["qinit", "1", ">"],
+            "o": ["qinit", "0", ">"],
+            "i": ["qinit", "1", ">"],
+            "_": ["copying_from_right_to_left", "_", "<"]
+        },
+        "copying_from_right_to_left": {
+            "0": ["copying_0_to_the_right", "o", ">"],
+            "1": ["copying_1_to_the_right", "i", ">"],
+            "o": ["copying_from_right_to_left", "o", "<"],
+            "i": ["copying_from_right_to_left", "i", "<"],
+            "_": ["removing_the_markers", "_", ">"]
+        },
+        "copying_0_to_the_right": {
+            "_": ["copying_from_right_to_left", "o", "<"],
+            "0": ["copying_0_to_the_right", "0", ">"],
+            "1": ["copying_0_to_the_right", "1", ">"],
+            "o": ["copying_0_to_the_right", "o", ">"],
+            "i": ["copying_0_to_the_right", "i", ">"]
+        },
+        "copying_1_to_the_right": {
+            "_": ["copying_from_right_to_left", "i", "<"],
+            "0": ["copying_1_to_the_right", "0", ">"],
+            "1": ["copying_1_to_the_right", "1", ">"],
+            "o": ["copying_1_to_the_right", "o", ">"],
+            "i": ["copying_1_to_the_right", "i", ">"]
+        },
+        "removing_the_markers": {
+            "0": ["removing_the_markers", "0", "<"],
+            "1": ["removing_the_markers", "1", "<"],
+            "o": ["removing_the_markers", "0", ">"],
+            "i": ["removing_the_markers", "1", ">"],
+            "_": ["qfin", "_", ">"] 
+        },
+        "qfin": {}
+    },
+    "estado_inicial": "qinit",
+    "simbolo_branco": "_",
+    "estados_finais": ["qfin"],
+    "aceitacao": false
+}

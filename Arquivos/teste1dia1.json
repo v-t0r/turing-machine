@@ -1,0 +1,31 @@
+{
+    "nome": "Teste 1",
+    "estados": ["q0", "q1", "q2", "q3", "q4"],
+    "simbolos_entrada": ["a", "b"],
+    "simbolos_fita": ["a", "b", "x", "y", "_"],
+    "transicoes": {
+        "q0": {
+            "a": ["q1", "x", ">"],
+            "y": ["q3", "y", ">"]
+        },
+        "q1": {
+            "a": ["q1", "a", ">"],
+            "y": ["q1", "y", ">"],
+            "b": ["q2", "y", "<"]
+        },
+        "q2": {
+            "y": ["q2", "y", "<"],
+            "a": ["q2", "a", "<"],
+            "x": ["q0", "x", ">"]
+        },
+        "q3": {
+            "y": ["q3", "y", ">"],
+            "_": ["q4", "_", ">"]
+        },
+        "q4": {}
+    },
+    "estado_inicial": "q0",
+    "simbolo_branco": "_",
+    "estados_finais": ["q4"],
+    "aceitacao": true
+}
